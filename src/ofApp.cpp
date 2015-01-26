@@ -1,6 +1,8 @@
 #include "ofApp.h"
 
-
+bool globalSortXFunction(ofRectangle a, ofRectangle b){
+    return a.x < b.x;
+}
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -39,6 +41,9 @@ void ofApp::draw(){
     
     for(int i = 0; i < mRectangles.size(); i++)
     {
+        
+        ofSetColor(255 * (float)i/mRectangles.size()); //gradually make the rectangles lighter
+        
         ofRect(mRectangles[i]); //you might not be used to using ofRect in this way
                                 //try cmd clicking on ofRect and looking at the source code to
                                 // investigate other methods
@@ -79,6 +84,16 @@ void ofApp::removeRandomItem(){
     
 }
 
+void ofApp::sortByXAxis(){
+    
+    sort(mRectangles.begin(),mRectangles.end(), globalSortXFunction); // notice that I don't need to pass any parameters to globalSortXFunction
+                                                                      // this is a function pointer ... like in javascript
+    
+    //TASK: make a sort by Y
+    //use C++ to look up the shuffle method
+    
+}
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
@@ -86,7 +101,9 @@ void ofApp::keyPressed(int key){
         case OF_KEY_BACKSPACE:
             removeRandomItem();
             break;
-            
+        case ' ':
+            sortByXAxis();
+            break;
         default:
             break;
     }

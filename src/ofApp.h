@@ -19,6 +19,7 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         void removeRandomItem();
+        void sortByXAxis();
     
         vector<ofRectangle> mRectangles; //vectors can contain any type of object
     
