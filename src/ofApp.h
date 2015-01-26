@@ -18,6 +18,8 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        vector<ofRectangle> mRectangles;
+        void removeRandomItem();
+    
+        vector<ofRectangle> mRectangles; //vectors can contain any type of object
     
 };

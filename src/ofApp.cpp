@@ -53,20 +53,43 @@ void ofApp::draw(){
     vector<ofRectangle>::iterator it; //declare the iterator type as vector<ofRectangle>
     it = mRectangles.begin(); //set it to the beginning of the vector
     
-    while (it != mRectangles.end()) {
+    while (it != mRectangles.end()) { // the end iterator is AFTER the final item
         
         ofRect(it->x, it->y, 20,20); //notice that 'it' is actually a pointer ... thats why we use -> instead of .
         
         it++; //increment the iterator just like you would an index integer
     }
     
+    //TASK:
+    //now create a vector of ofVec2fs
+    //use an iterator to draw them in a for loop
+    
 
+    
+}
+
+void ofApp::removeRandomItem(){
+    
+    int i = ofRandom(0, mRectangles.size() -1 ); //an index somewhere in the vector
+    mRectangles.erase(mRectangles.begin() + i ); //turn it back into an iterator by adding it to .begin()
+    
+    //TASK:
+    //look up erase at http://www.cplusplus.com/reference/vector/vector/erase/
+    //work out how to delete multiple consecutive items at once without using any loops
     
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
+    switch (key) {
+        case OF_KEY_BACKSPACE:
+            removeRandomItem();
+            break;
+            
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
