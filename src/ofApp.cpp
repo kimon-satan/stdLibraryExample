@@ -30,7 +30,7 @@ void ofApp::setup(){
     }
     
     
-
+    mFont.loadFont("256BYTES.TTF", 40);
     
     
 }
@@ -86,9 +86,13 @@ void ofApp::draw(){
                                       // however maps are unordered we have no idea which order the elements will come out
         
         ofFill();
-        ofSetColor(0, 255, 0,150);
+
+        ofSetColor(0,0, 200,150);
         ofRect(it2->second); // we need to use first to look up the key - in this case a string
                             //and second to look up the value - in this case a rectangle object
+        
+        ofSetColor(0, 255, 0);
+        mFont.drawString(it2->first, it2->second.x, it2->second.y + it2->second.height);
         
         it2++;
     }
@@ -166,7 +170,10 @@ void ofApp::mousePressed(int x, int y, int button){
     
     
     string s = generateRandomString(ofRandom(4,10));
-    mTextAreas[s] = ofRectangle(x,y,100,100);
+    ofRectangle r = mFont.getStringBoundingBox(s, x, y);
+    mTextAreas[s] = r;
+    
+    
 
 }
 

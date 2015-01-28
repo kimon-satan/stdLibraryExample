@@ -26,6 +26,8 @@ class ofApp : public ofBaseApp{
         vector<ofRectangle> mRectangles; //vectors can contain any type of object
     
         map<string, ofRectangle> mTextAreas; //maps are just like objects in javascript and dictionaries in python
+    
+        ofTrueTypeFont mFont;
 
     
 };
