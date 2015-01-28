@@ -29,6 +29,10 @@ void ofApp::setup(){
                               );
     }
     
+    
+
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -75,6 +79,20 @@ void ofApp::draw(){
     //now create a vector of ofVec2fs
     //use an iterator to draw them in a for loop
     
+    
+    map<string, ofRectangle>::iterator it2 = mTextAreas.begin();
+    
+    while (it2 != mTextAreas.end()) { // we can increment through a map just like a vector
+                                      // however maps are unordered we have no idea which order the elements will come out
+        
+        ofFill();
+        ofSetColor(0, 255, 0,150);
+        ofRect(it2->second); // we need to use first to look up the key - in this case a string
+                            //and second to look up the value - in this case a rectangle object
+        
+        it2++;
+    }
+    
 
     
 }
@@ -99,6 +117,18 @@ void ofApp::sortByXAxis(){
     //use cplusplus.com to look up the shuffle method
     //you might want globalSortXFunction NOT to be global (either in a namespace or a static member function ... see if you can do this)
     
+}
+
+string ofApp::generateRandomString(int numChars){
+
+    string t_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@$%^&*()";
+    string randomString = "";
+    
+    for(int i = 0; i < numChars; i++){
+        randomString += t_chars.substr(ofRandom(0, t_chars.length()-1), 1);
+    }
+    
+    return randomString;
 }
 
 //--------------------------------------------------------------
@@ -133,6 +163,10 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+    
+    
+    string s = generateRandomString(ofRandom(4,10));
+    mTextAreas[s] = ofRectangle(x,y,100,100);
 
 }
 
