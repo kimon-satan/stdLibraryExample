@@ -92,7 +92,7 @@ void ofApp::draw(){
                             //and second to look up the value - in this case a rectangle object
         
         ofSetColor(0, 255, 0);
-        mFont.drawString(it2->first, it2->second.x, it2->second.y + it2->second.height);
+        mFont.drawString(it2->first, it2->second.x, it2->second.y + it2->second.height); //Ugh text draws from the bottom left so we have to correct it to match our rectangle
         
         it2++;
     }
@@ -158,6 +158,9 @@ void ofApp::keyReleased(int key){
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y){
 
+    //TASK make a function that prints the text to console using cout when the mouse pointer is inside the rectangle
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -173,6 +176,8 @@ void ofApp::mousePressed(int x, int y, int button){
     ofRectangle r = mFont.getStringBoundingBox(s, x, y);
     mTextAreas[s] = r;
     
+    
+
     
 
 }
