@@ -1,8 +1,14 @@
 #include "ofApp.h"
 
-bool globalSortXFunction(ofRectangle a, ofRectangle b){
-    return a.x < b.x;
+
+    
+
+
+bool globalSortXFunction(ofRectangle a, ofRectangle b){ //this is our custom sort function
+        return a.x < b.x;
 }
+    
+
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -90,7 +96,8 @@ void ofApp::sortByXAxis(){
                                                                       // this is a function pointer ... like in javascript
     
     //TASK: make a sort by Y
-    //use C++ to look up the shuffle method
+    //use cplusplus.com to look up the shuffle method
+    //you might want globalSortXFunction NOT to be global (either in a namespace or a static member function ... see if you can do this)
     
 }
 
